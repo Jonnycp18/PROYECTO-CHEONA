@@ -1,16 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, TreePine, User, LogOut, Calendar, HelpCircle, Settings, LayoutDashboard, Bell } from 'lucide-react';
-import AuthModal from '../auth/AuthModal';
-import Button from '../ui/Button';
-import { useAuth } from '../auth/AuthContext';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import {
+  Menu,
+  X,
+  TreePine,
+  User,
+  LogOut,
+  Calendar,
+  HelpCircle,
+  Settings,
+  LayoutDashboard,
+  Bell,
+} from "lucide-react";
+import AuthModal from "../auth/AuthModal";
+import Button from "../ui/Button";
+import { useAuth } from "../auth/AuthContext";
 
 const Header = () => {
   const { user, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [authModalView, setAuthModalView] = useState('login');
+  const [authModalView, setAuthModalView] = useState("login");
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -19,19 +30,19 @@ const Header = () => {
       setIsScrolled(window.scrollY > 20);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isUserMenuOpen && !event.target.closest('.user-menu')) {
+      if (isUserMenuOpen && !event.target.closest(".user-menu")) {
         setIsUserMenuOpen(false);
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, [isUserMenuOpen]);
 
   const toggleMenu = () => {
@@ -61,42 +72,57 @@ const Header = () => {
   };
 
   const navigationItems = [
-    ['/', 'Inicio'],
-    ['/reservar', 'Reserva'],
-    ['/servicios', 'Planes & Servicios'],
-    ['/como-llegar', 'Cómo Llegar'],
+    ["/", "Inicio"],
+    ["/reservar", "Reserva"],
+    ["/servicios", "Planes & Servicios"],
+    ["/como-llegar", "Cómo Llegar"],
   ];
 
   const userMenuItems = [
-    { icon: <User size={18} />, label: 'Mi Perfil', path: '/perfil' },
-    { icon: <Calendar size={18} />, label: 'Mis Reservas', path: '/mis-reservas' },
-    { icon: <HelpCircle size={18} />, label: 'Ayuda', path: '/ayuda' },
-    { icon: <Settings size={18} />, label: 'Configuración', path: '/configuracion' },
+    { icon: <User size={18} />, label: "Mi Perfil", path: "/perfil" },
+    {
+      icon: <Calendar size={18} />,
+      label: "Mis Reservas",
+      path: "/mis-reservas",
+    },
+    { icon: <HelpCircle size={18} />, label: "Ayuda", path: "/ayuda" },
+    {
+      icon: <Settings size={18} />,
+      label: "Configuración",
+      path: "/configuracion",
+    },
   ];
 
   // Si el usuario es admin, agregar el enlace al dashboard
-  if (user?.rol === 'admin') {
-    userMenuItems.unshift({ 
-      icon: <LayoutDashboard size={18} />, 
-      label: 'Dashboard', 
-      path: '/admin' 
+  if (user?.rol === "admin") {
+    userMenuItems.unshift({
+      icon: <LayoutDashboard size={18} />,
+      label: "Dashboard",
+      path: "/admin",
     });
   }
 
   // Lista de rutas que deben tener header transparente
-  const transparentHeaderPaths = ['/', '/reservar', '/servicios', '/como-llegar'];
-  const shouldBeTransparent = transparentHeaderPaths.includes(location.pathname);
+  const transparentHeaderPaths = [
+    "/",
+    "/reservar",
+    "/servicios",
+    "/como-llegar",
+  ];
+  const shouldBeTransparent = transparentHeaderPaths.includes(
+    location.pathname,
+  );
 
   // Número de notificaciones no leídas (ejemplo)
   const unreadNotifications = 3;
 
   return (
     <>
-      <header 
+      <header
         className={`fixed w-full z-50 transition-all duration-500 ${
           isScrolled || !shouldBeTransparent
-            ? 'bg-white shadow-lg' 
-            : 'bg-transparent'
+            ? "bg-white shadow-lg"
+            : "bg-transparent"
         }`}
       >
         <div className="container-custom">
@@ -104,22 +130,32 @@ const Header = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center group">
               <div className="flex items-center space-x-3">
-                <TreePine 
-                  size={32} 
+                <TreePine
+                  size={32}
                   className={`transition-colors duration-300 ${
-                    isScrolled || !shouldBeTransparent ? 'text-primary' : 'text-white'
+                    isScrolled || !shouldBeTransparent
+                      ? "text-primary"
+                      : "text-white"
                   }`}
                   strokeWidth={1.5}
                 />
                 <div className="flex flex-col -space-y-1">
-                  <span className={`text-2xl font-bold font-heading tracking-wide transition-colors leading-tight ${
-                    isScrolled || !shouldBeTransparent ? 'text-primary' : 'text-white'
-                  }`}>
+                  <span
+                    className={`text-2xl font-bold font-heading tracking-wide transition-colors leading-tight ${
+                      isScrolled || !shouldBeTransparent
+                        ? "text-primary"
+                        : "text-white"
+                    }`}
+                  >
                     Finca
                   </span>
-                  <span className={`text-xl font-medium font-heading tracking-wide transition-colors ${
-                    isScrolled || !shouldBeTransparent ? 'text-primary' : 'text-white'
-                  }`}>
+                  <span
+                    className={`text-xl font-medium font-heading tracking-wide transition-colors ${
+                      isScrolled || !shouldBeTransparent
+                        ? "text-primary"
+                        : "text-white"
+                    }`}
+                  >
                     Cheona
                   </span>
                 </div>
@@ -135,11 +171,11 @@ const Header = () => {
                   className={`px-5 py-2.5 mx-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     isActive(path)
                       ? isScrolled || !shouldBeTransparent
-                        ? 'bg-primary/10 text-primary'
-                        : 'bg-white/20 text-white'
+                        ? "bg-primary/10 text-primary"
+                        : "bg-white/20 text-white"
                       : isScrolled || !shouldBeTransparent
-                        ? 'text-neutral-700 hover:bg-neutral-100'
-                        : 'text-white/90 hover:bg-white/10 hover:text-white'
+                        ? "text-neutral-700 hover:bg-neutral-100"
+                        : "text-white/90 hover:bg-white/10 hover:text-white"
                   }`}
                 >
                   {label}
@@ -156,8 +192,8 @@ const Header = () => {
                     to="/notificaciones"
                     className={`relative p-2 rounded-full transition-colors ${
                       isScrolled || !shouldBeTransparent
-                        ? 'hover:bg-neutral-100 text-neutral-700'
-                        : 'text-white hover:bg-white/10'
+                        ? "hover:bg-neutral-100 text-neutral-700"
+                        : "text-white hover:bg-white/10"
                     }`}
                   >
                     <Bell size={20} />
@@ -167,14 +203,14 @@ const Header = () => {
                       </span>
                     )}
                   </Link>
-                  
+
                   <div className="relative user-menu">
                     <button
                       onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                       className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-colors ${
                         isScrolled || !shouldBeTransparent
-                          ? 'hover:bg-neutral-100 text-neutral-700' 
-                          : 'text-white hover:bg-white/10'
+                          ? "hover:bg-neutral-100 text-neutral-700"
+                          : "text-white hover:bg-white/10"
                       }`}
                     >
                       <User size={20} />
@@ -208,22 +244,22 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     size="sm"
-                    onClick={() => handleAuthClick('login')}
+                    onClick={() => handleAuthClick("login")}
                     className={`rounded-full px-5 transition-all duration-300 ${
                       !isScrolled && shouldBeTransparent
-                        ? 'border-white text-white hover:bg-white hover:text-primary' 
-                        : 'hover:bg-primary/10'
+                        ? "border-white text-white hover:bg-white hover:text-primary"
+                        : "hover:bg-primary/10"
                     }`}
                   >
                     Acceder
                   </Button>
-                  <Button 
-                    variant="primary" 
+                  <Button
+                    variant="primary"
                     size="sm"
-                    onClick={() => handleAuthClick('register')}
+                    onClick={() => handleAuthClick("register")}
                     className="rounded-full px-5 transition-all duration-300"
                   >
                     Registrarse
@@ -236,7 +272,9 @@ const Header = () => {
             <button
               onClick={toggleMenu}
               className={`md:hidden p-2 transition-colors ${
-                isScrolled || !shouldBeTransparent ? 'text-neutral-700' : 'text-white'
+                isScrolled || !shouldBeTransparent
+                  ? "text-neutral-700"
+                  : "text-white"
               } hover:text-primary focus:outline-none`}
               aria-label="Toggle menu"
             >
@@ -256,14 +294,14 @@ const Header = () => {
                   onClick={closeMenu}
                   className={`px-5 py-3 rounded-xl transition-colors ${
                     isActive(path)
-                      ? 'bg-primary/10 text-primary font-medium'
-                      : 'text-neutral-700 hover:bg-neutral-100'
+                      ? "bg-primary/10 text-primary font-medium"
+                      : "text-neutral-700 hover:bg-neutral-100"
                   }`}
                 >
                   {label}
                 </Link>
               ))}
-              
+
               {user ? (
                 <>
                   {/* Mobile Notifications Link */}
@@ -280,7 +318,7 @@ const Header = () => {
                       </span>
                     )}
                   </Link>
-                  
+
                   {userMenuItems.map((item, index) => (
                     <Link
                       key={index}
@@ -303,18 +341,18 @@ const Header = () => {
               ) : (
                 <div className="pt-4 border-t border-neutral-200 mt-2">
                   <div className="flex flex-col space-y-3 px-4">
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       fullWidth
-                      onClick={() => handleAuthClick('login')}
+                      onClick={() => handleAuthClick("login")}
                       className="rounded-full py-3"
                     >
                       Acceder
                     </Button>
-                    <Button 
-                      variant="primary" 
+                    <Button
+                      variant="primary"
                       fullWidth
-                      onClick={() => handleAuthClick('register')}
+                      onClick={() => handleAuthClick("register")}
                       className="rounded-full py-3"
                     >
                       Registrarse
@@ -327,7 +365,7 @@ const Header = () => {
         )}
       </header>
 
-      <AuthModal 
+      <AuthModal
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
         initialView={authModalView}

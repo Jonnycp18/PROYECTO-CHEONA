@@ -1,12 +1,12 @@
-import React from 'react';
-import { MapPin, Clock, Phone, Mail } from 'lucide-react';
-import Button from '../components/ui/Button';
+import React from "react";
+import { MapPin, Clock, Phone, Mail } from "lucide-react";
+import Button from "../components/ui/Button";
 
 const HowToGet = () => {
   const tips = [
-    'Recomendamos llegar durante horas de luz natural',
-    'El último tramo es camino de lastre, conducir con precaución',
-    'Hay señalización en los puntos principales del recorrido'
+    "Recomendamos llegar durante horas de luz natural",
+    "El último tramo es camino de lastre, conducir con precaución",
+    "Hay señalización en los puntos principales del recorrido",
   ];
 
   return (
@@ -32,7 +32,7 @@ const HowToGet = () => {
               <MapPin className="text-accent" size={24} />
               <h2 className="text-2xl font-bold">Finca Cheona</h2>
             </div>
-            
+
             <p className="text-neutral-600 mb-4">
               Calle Yerbabuena, San José Province, San José, Costa Rica
             </p>
@@ -50,7 +50,7 @@ const HowToGet = () => {
               variant="primary"
               fullWidth
               className="bg-accent hover:bg-accent/90"
-              onClick={() => window.open('https://maps.google.com')}
+              onClick={() => window.open("https://maps.google.com")}
             >
               Obtener Direcciones
             </Button>
@@ -60,17 +60,17 @@ const HowToGet = () => {
           <div className="bg-accent rounded-2xl p-8 text-white">
             <h2 className="text-2xl font-bold mb-4">Contacto Directo</h2>
             <p className="mb-6">¿Necesitas ayuda para llegar? Llámanos:</p>
-            
+
             <div className="space-y-4">
-              <a 
+              <a
                 href="tel:+12345678890"
                 className="flex items-center gap-3 bg-accent-dark/20 p-4 rounded-xl hover:bg-accent-dark/30 transition-colors"
               >
                 <Phone size={20} />
                 +1 234 567 890
               </a>
-              
-              <a 
+
+              <a
                 href="mailto:info@fincacheona.com"
                 className="flex items-center gap-3 bg-accent-dark/20 p-4 rounded-xl hover:bg-accent-dark/30 transition-colors"
               >

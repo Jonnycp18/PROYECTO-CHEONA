@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import SectionTitle from '../ui/SectionTitle';
-import RoomCard from '../ui/RoomCard';
-import Button from '../ui/Button';
-import { reservationService } from '../../services/reservationService';
-import { ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import SectionTitle from "../ui/SectionTitle";
+import RoomCard from "../ui/RoomCard";
+import Button from "../ui/Button";
+import { reservationService } from "../../services/reservationService";
+import { ChevronRight } from "lucide-react";
 
 const FeaturedRooms = () => {
   const [rooms, setRooms] = useState([]);
@@ -15,7 +15,7 @@ const FeaturedRooms = () => {
         const data = await reservationService.getRooms();
         setRooms(data.slice(0, 3)); // Mostrar solo las 3 primeras
       } catch (error) {
-        console.error('Error al cargar habitaciones:', error);
+        console.error("Error al cargar habitaciones:", error);
       } finally {
         setLoading(false);
       }
@@ -27,8 +27,8 @@ const FeaturedRooms = () => {
   if (loading) {
     return (
       <div className="section container-custom">
-        <SectionTitle 
-          title="Nuestros Alojamientos" 
+        <SectionTitle
+          title="Nuestros Alojamientos"
           subtitle="Descubre nuestras acogedoras opciones de hospedaje"
         />
         <div className="grid grid-cols-1 gap-8">
@@ -53,20 +53,20 @@ const FeaturedRooms = () => {
 
   return (
     <section className="section container-custom">
-      <SectionTitle 
-        title="Nuestros Alojamientos" 
+      <SectionTitle
+        title="Nuestros Alojamientos"
         subtitle="Descubre nuestras acogedoras opciones de hospedaje"
       />
-      
+
       <div className="grid grid-cols-1 gap-8">
         {rooms.map((room, index) => (
           <RoomCard key={room.id} room={room} featured={index === 0} />
         ))}
       </div>
-      
+
       <div className="mt-10 text-center">
-        <Button 
-          to="/habitaciones" 
+        <Button
+          to="/habitaciones"
           variant="outline"
           icon={<ChevronRight size={18} />}
           iconPosition="right"

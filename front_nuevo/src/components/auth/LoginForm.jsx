@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Loader, Eye, EyeOff } from 'lucide-react';
-import Button from '../ui/Button';
-import { useAuth } from './AuthContext';
+import React, { useState } from "react";
+import { Loader, Eye, EyeOff } from "lucide-react";
+import Button from "../ui/Button";
+import { useAuth } from "./AuthContext";
 
 const LoginForm = ({ onClose }) => {
   const { login } = useAuth();
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -21,19 +21,20 @@ const LoginForm = ({ onClose }) => {
 
     try {
       // Llamada al backend para autenticar
-      const response = await fetch('http://localhost:8000/api/login', { // Cambia la URL si es necesario
-        method: 'POST',
+      const response = await fetch("http://localhost:8000/api/login", {
+        // Cambia la URL si es necesario
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: formData.email,
-          password: formData.password
-        })
+          password: formData.password,
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Credenciales incorrectas');
+        throw new Error("Credenciales incorrectas");
       }
 
       const userData = await response.json();
@@ -41,11 +42,11 @@ const LoginForm = ({ onClose }) => {
         id_cliente: userData.user.id_cliente,
         nombre: userData.user.nombre,
         email: userData.user.email,
-        rol: userData.user.rol
+        rol: userData.user.rol,
       });
       onClose();
     } catch (err) {
-      setError('Email o contraseña incorrectos');
+      setError("Email o contraseña incorrectos");
     } finally {
       setLoading(false);
     }
@@ -53,11 +54,11 @@ const LoginForm = ({ onClose }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
-    
+
     if (error) setError(null);
   };
 
@@ -140,7 +141,7 @@ const LoginForm = ({ onClose }) => {
             <span>Iniciando sesión...</span>
           </div>
         ) : (
-          'Iniciar sesión'
+          "Iniciar sesión"
         )}
       </Button>
     </form>

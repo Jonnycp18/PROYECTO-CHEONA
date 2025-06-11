@@ -50,17 +50,20 @@ src/
 ### Pasos para la instalación
 
 1. Clona el repositorio:
+
    ```
    git clone https://github.com/tu-usuario/finca-reservas.git
    cd finca-reservas
    ```
 
 2. Instala las dependencias:
+
    ```
    npm install
    ```
 
 3. Ejecuta el servidor de desarrollo:
+
    ```
    npm run dev
    ```
@@ -79,15 +82,16 @@ Los archivos compilados se encontrarán en el directorio `dist/`.
 
 ## Conexión con backend
 
-Este frontend está diseñado para conectarse a un backend desarrollado en Python (Flask o Django) con una base de datos MySQL. 
+Este frontend está diseñado para conectarse a un backend desarrollado en Python (Flask o Django) con una base de datos MySQL.
 
 ### Configuración de la API
 
 La comunicación con el backend se realiza a través de los servicios definidos en `src/services/`. Para conectar con tu backend:
 
 1. Modifica la URL base en `src/services/api.ts`:
+
    ```typescript
-   const API_BASE_URL = 'http://tu-backend-url.com/api';
+   const API_BASE_URL = "http://tu-backend-url.com/api";
    ```
 
 2. Implementa los endpoints correspondientes en tu backend según los servicios definidos:
@@ -133,6 +137,7 @@ if __name__ == '__main__':
 Los colores y estilos principales se definen en `src/index.css` y `tailwind.config.js`. Para personalizar:
 
 1. Modifica las variables CSS en `src/index.css`:
+
    ```css
    :root {
      --color-primary: 45, 106, 79; /* Cambia estos valores para el color primario */

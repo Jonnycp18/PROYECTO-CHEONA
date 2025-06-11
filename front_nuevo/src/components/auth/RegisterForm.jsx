@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { Loader, Eye, EyeOff } from 'lucide-react';
-import Button from '../ui/Button';
+import React, { useState } from "react";
+import { Loader, Eye, EyeOff } from "lucide-react";
+import Button from "../ui/Button";
 
 const RegisterForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellido: '',
-    email: '',
-    telefono: '',
-    documento_identidad: '',
-    password: '',
-    confirmPassword: '',
+    nombre: "",
+    apellido: "",
+    email: "",
+    telefono: "",
+    documento_identidad: "",
+    password: "",
+    confirmPassword: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -21,7 +21,7 @@ const RegisterForm = ({ onClose }) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      setError('Las contraseñas no coinciden');
+      setError("Las contraseñas no coinciden");
       return;
     }
 
@@ -30,10 +30,10 @@ const RegisterForm = ({ onClose }) => {
 
     try {
       // Llama al endpoint de registro del backend
-      const response = await fetch('http://127.0.0.1:8000/usuarios/', {
-        method: 'POST',
+      const response = await fetch("http://127.0.0.1:8000/usuarios/", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           nombre: formData.nombre,
@@ -47,12 +47,18 @@ const RegisterForm = ({ onClose }) => {
 
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.message || 'Error al crear la cuenta. Por favor, inténtalo de nuevo.');
+        throw new Error(
+          data.message ||
+            "Error al crear la cuenta. Por favor, inténtalo de nuevo.",
+        );
       }
 
       onClose();
     } catch (err) {
-      setError(err.message || 'Error al crear la cuenta. Por favor, inténtalo de nuevo.');
+      setError(
+        err.message ||
+          "Error al crear la cuenta. Por favor, inténtalo de nuevo.",
+      );
     } finally {
       setLoading(false);
     }
@@ -60,9 +66,9 @@ const RegisterForm = ({ onClose }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
 
     // Clear error when user starts typing
@@ -211,18 +217,21 @@ const RegisterForm = ({ onClose }) => {
                 <span>Creando cuenta...</span>
               </div>
             ) : (
-              'Crear cuenta'
+              "Crear cuenta"
             )}
           </Button>
         </div>
 
         <p className="text-[10px] text-center text-neutral-500 mt-1">
-          Al crear una cuenta, aceptas nuestros{' '}
+          Al crear una cuenta, aceptas nuestros{" "}
           <a href="/terminos" className="text-primary hover:text-primary-dark">
             Términos y condiciones
-          </a>{' '}
-          y{' '}
-          <a href="/privacidad" className="text-primary hover:text-primary-dark">
+          </a>{" "}
+          y{" "}
+          <a
+            href="/privacidad"
+            className="text-primary hover:text-primary-dark"
+          >
             Política de privacidad
           </a>
         </p>

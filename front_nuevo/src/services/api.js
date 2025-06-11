@@ -1,13 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
 // Esta URL debe ser actualizada cuando el backend esté disponible
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = "http://localhost:5000/api";
 
 // Configura axios con valores predeterminados
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
@@ -16,9 +16,9 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     // Loguear error o mostrar notificación
-    console.error('API Error:', error.response?.data || error.message);
+    console.error("API Error:", error.response?.data || error.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 // Funciones genéricas para peticiones HTTP

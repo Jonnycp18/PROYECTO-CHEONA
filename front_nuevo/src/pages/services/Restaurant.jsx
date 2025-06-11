@@ -1,24 +1,24 @@
-import React from 'react';
-import { Utensils, Coffee, Wine, Clock, Star, MapPin } from 'lucide-react';
-import Button from '../../components/ui/Button';
+import React from "react";
+import { Utensils, Coffee, Wine, Clock, Star, MapPin } from "lucide-react";
+import Button from "../../components/ui/Button";
 
 const Restaurant = () => {
   const features = [
     {
       icon: <Utensils className="w-6 h-6 text-primary" />,
       title: "Cocina Local",
-      description: "Platos tradicionales con un toque moderno"
+      description: "Platos tradicionales con un toque moderno",
     },
     {
       icon: <Coffee className="w-6 h-6 text-primary" />,
       title: "Café de Altura",
-      description: "Granos seleccionados de la región"
+      description: "Granos seleccionados de la región",
     },
     {
       icon: <Wine className="w-6 h-6 text-primary" />,
       title: "Cava Selecta",
-      description: "Vinos nacionales e importados"
-    }
+      description: "Vinos nacionales e importados",
+    },
   ];
 
   const menuSections = [
@@ -28,14 +28,14 @@ const Restaurant = () => {
         {
           name: "Desayuno Campesino",
           description: "Huevos, arepa, queso, café y jugo natural",
-          price: "25.000"
+          price: "25.000",
         },
         {
           name: "Desayuno Especial",
           description: "Pancakes, frutas, yogurt y granola",
-          price: "30.000"
-        }
-      ]
+          price: "30.000",
+        },
+      ],
     },
     {
       name: "Platos Principales",
@@ -43,14 +43,14 @@ const Restaurant = () => {
         {
           name: "Trucha al Ajillo",
           description: "Trucha fresca con papas criollas y ensalada",
-          price: "45.000"
+          price: "45.000",
         },
         {
           name: "Lomo en Salsa",
           description: "Lomo fino con champiñones y pure de papa",
-          price: "50.000"
-        }
-      ]
+          price: "50.000",
+        },
+      ],
     },
     {
       name: "Postres",
@@ -58,15 +58,15 @@ const Restaurant = () => {
         {
           name: "Postre de la Casa",
           description: "Receta especial del chef",
-          price: "15.000"
+          price: "15.000",
         },
         {
           name: "Frutas de Temporada",
           description: "Selección de frutas locales",
-          price: "12.000"
-        }
-      ]
-    }
+          price: "12.000",
+        },
+      ],
+    },
   ];
 
   return (
@@ -115,12 +115,19 @@ const Restaurant = () => {
                 <h3 className="text-2xl font-bold mb-6">{section.name}</h3>
                 <div className="space-y-6">
                   {section.items.map((item, i) => (
-                    <div key={i} className="pb-6 border-b border-neutral-100 last:border-0">
+                    <div
+                      key={i}
+                      className="pb-6 border-b border-neutral-100 last:border-0"
+                    >
                       <div className="flex justify-between items-start mb-2">
                         <h4 className="font-bold">{item.name}</h4>
-                        <span className="text-primary font-bold">${item.price}</span>
+                        <span className="text-primary font-bold">
+                          ${item.price}
+                        </span>
                       </div>
-                      <p className="text-neutral-600 text-sm">{item.description}</p>
+                      <p className="text-neutral-600 text-sm">
+                        {item.description}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -135,7 +142,9 @@ const Restaurant = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Información del Restaurante</h2>
+              <h2 className="text-3xl font-bold mb-6">
+                Información del Restaurante
+              </h2>
               <div className="space-y-6">
                 <div className="flex items-center">
                   <Clock className="text-primary mr-3" />
@@ -161,7 +170,9 @@ const Restaurant = () => {
                   <Star className="text-primary mr-3" />
                   <div>
                     <p className="font-medium">Calificación</p>
-                    <p className="text-neutral-600">4.8/5 basado en 120 reseñas</p>
+                    <p className="text-neutral-600">
+                      4.8/5 basado en 120 reseñas
+                    </p>
                   </div>
                 </div>
               </div>

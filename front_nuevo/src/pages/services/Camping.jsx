@@ -1,24 +1,24 @@
-import React from 'react';
-import { Tent, Users, Mountain, Coffee, Wifi, MapPin } from 'lucide-react';
-import Button from '../../components/ui/Button';
+import React from "react";
+import { Tent, Users, Mountain, Coffee, Wifi, MapPin } from "lucide-react";
+import Button from "../../components/ui/Button";
 
 const Camping = () => {
   const features = [
     {
       icon: <Mountain className="w-6 h-6 text-primary" />,
       title: "Ubicación Privilegiada",
-      description: "Rodeado de naturaleza y vistas panorámicas"
+      description: "Rodeado de naturaleza y vistas panorámicas",
     },
     {
       icon: <Users className="w-6 h-6 text-primary" />,
       title: "Capacidad",
-      description: "Espacio para 20 carpas y 60 personas"
+      description: "Espacio para 20 carpas y 60 personas",
     },
     {
       icon: <Wifi className="w-6 h-6 text-primary" />,
       title: "Comodidades",
-      description: "WiFi, baños y duchas con agua caliente"
-    }
+      description: "WiFi, baños y duchas con agua caliente",
+    },
   ];
 
   const packages = [
@@ -29,8 +29,8 @@ const Camping = () => {
         "Espacio para carpa",
         "Acceso a baños",
         "Parqueadero",
-        "Zona de fogata"
-      ]
+        "Zona de fogata",
+      ],
     },
     {
       name: "Comfort",
@@ -39,8 +39,8 @@ const Camping = () => {
         "Todo lo del paquete básico",
         "Carpa incluida",
         "Colchonetas",
-        "Desayuno incluido"
-      ]
+        "Desayuno incluido",
+      ],
     },
     {
       name: "Premium",
@@ -49,9 +49,9 @@ const Camping = () => {
         "Todo lo del paquete comfort",
         "Sleeping bags",
         "Kit de camping",
-        "Todas las comidas incluidas"
-      ]
-    }
+        "Todas las comidas incluidas",
+      ],
+    },
   ];
 
   return (
@@ -67,7 +67,8 @@ const Camping = () => {
           <div className="text-center text-white">
             <h1 className="text-5xl font-bold mb-4">Camping</h1>
             <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Vive una experiencia única en medio de la naturaleza con todas las comodidades
+              Vive una experiencia única en medio de la naturaleza con todas las
+              comodidades
             </p>
           </div>
         </div>
@@ -93,14 +94,21 @@ const Camping = () => {
       {/* Paquetes */}
       <section className="py-16 bg-neutral-50">
         <div className="container-custom">
-          <h2 className="text-3xl font-bold text-center mb-12">Nuestros Paquetes</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Nuestros Paquetes
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {packages.map((pkg, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow"
+              >
                 <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
                 <div className="text-3xl font-bold text-primary mb-6">
                   ${pkg.price}
-                  <span className="text-sm text-neutral-600 font-normal">/noche</span>
+                  <span className="text-sm text-neutral-600 font-normal">
+                    /noche
+                  </span>
                 </div>
                 <ul className="space-y-4 mb-8">
                   {pkg.features.map((feature, i) => (
@@ -112,7 +120,9 @@ const Camping = () => {
                     </li>
                   ))}
                 </ul>
-                <Button variant="primary" fullWidth>Reservar ahora</Button>
+                <Button variant="primary" fullWidth>
+                  Reservar ahora
+                </Button>
               </div>
             ))}
           </div>
@@ -126,7 +136,9 @@ const Camping = () => {
             <div>
               <h2 className="text-3xl font-bold mb-6">Todo lo que necesitas</h2>
               <p className="text-lg text-neutral-600 mb-8">
-                Nuestro camping está equipado con todas las comodidades necesarias para que tu experiencia sea inolvidable. Contamos con zonas comunes, área de BBQ, y personal disponible 24/7.
+                Nuestro camping está equipado con todas las comodidades
+                necesarias para que tu experiencia sea inolvidable. Contamos con
+                zonas comunes, área de BBQ, y personal disponible 24/7.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center">

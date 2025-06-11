@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
-import { useAuth } from '../../components/auth/AuthContext';
-import { Camera, Mail, Phone, MapPin, Calendar, Edit2, Save, X } from 'lucide-react';
-import Button from '../../components/ui/Button';
+import React, { useState } from "react";
+import { useAuth } from "../../components/auth/AuthContext";
+import {
+  Camera,
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  Edit2,
+  Save,
+  X,
+} from "lucide-react";
+import Button from "../../components/ui/Button";
 
 const Profile = () => {
   const { user } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
-    name: user?.name || '',
-    email: user?.email || '',
-    phone: '+57 300 123 4567',
-    location: 'Bogotá, Colombia',
-    bio: 'Amante de la naturaleza y los viajes.',
-    joinDate: 'Marzo 2025',
-    totalReservations: 5
+    name: user?.name || "",
+    email: user?.email || "",
+    phone: "+57 300 123 4567",
+    location: "Bogotá, Colombia",
+    bio: "Amante de la naturaleza y los viajes.",
+    joinDate: "Marzo 2025",
+    totalReservations: 5,
   });
 
   const handleSave = () => {
@@ -29,7 +38,10 @@ const Profile = () => {
             <div className="relative">
               <div className="w-24 h-24 rounded-full overflow-hidden bg-neutral-100">
                 <img
-                  src={user?.avatar || 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg'}
+                  src={
+                    user?.avatar ||
+                    "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
+                  }
                   alt="Foto de perfil"
                   className="w-full h-full object-cover"
                 />
@@ -80,7 +92,12 @@ const Profile = () => {
                     <input
                       type="email"
                       value={profileData.email}
-                      onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
+                      onChange={(e) =>
+                        setProfileData({
+                          ...profileData,
+                          email: e.target.value,
+                        })
+                      }
                       className="input h-8 text-sm"
                     />
                   ) : (
@@ -93,7 +110,12 @@ const Profile = () => {
                     <input
                       type="tel"
                       value={profileData.phone}
-                      onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })}
+                      onChange={(e) =>
+                        setProfileData({
+                          ...profileData,
+                          phone: e.target.value,
+                        })
+                      }
                       className="input h-8 text-sm"
                     />
                   ) : (
@@ -106,7 +128,12 @@ const Profile = () => {
                     <input
                       type="text"
                       value={profileData.location}
-                      onChange={(e) => setProfileData({ ...profileData, location: e.target.value })}
+                      onChange={(e) =>
+                        setProfileData({
+                          ...profileData,
+                          location: e.target.value,
+                        })
+                      }
                       className="input h-8 text-sm"
                     />
                   ) : (
@@ -122,7 +149,9 @@ const Profile = () => {
             {isEditing ? (
               <textarea
                 value={profileData.bio}
-                onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
+                onChange={(e) =>
+                  setProfileData({ ...profileData, bio: e.target.value })
+                }
                 className="input"
                 rows={3}
               />

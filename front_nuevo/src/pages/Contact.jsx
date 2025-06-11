@@ -1,61 +1,69 @@
-import React, { useState } from 'react';
-import SectionTitle from '../components/ui/SectionTitle';
-import Button from '../components/ui/Button';
-import { contactService } from '../services/contactService';
-import { Check, MapPin, Phone, Mail, Clock, Loader, AlertCircle } from 'lucide-react';
+import React, { useState } from "react";
+import SectionTitle from "../components/ui/SectionTitle";
+import Button from "../components/ui/Button";
+import { contactService } from "../services/contactService";
+import {
+  Check,
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Loader,
+  AlertCircle,
+} from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.name || !formData.email || !formData.message) {
-      setError('Por favor, completa todos los campos obligatorios.');
+      setError("Por favor, completa todos los campos obligatorios.");
       return;
     }
-    
+
     setIsSubmitting(true);
     setError(null);
-    
+
     try {
       const response = await contactService.sendContactForm(formData);
-      
+
       if (response) {
         setSuccess(true);
         setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
         });
       } else {
-        throw new Error('No se pudo enviar el formulario');
+        throw new Error("No se pudo enviar el formulario");
       }
     } catch (err) {
-      setError('Error al enviar el mensaje. Por favor, inténtalo de nuevo.');
+      setError("Error al enviar el mensaje. Por favor, inténtalo de nuevo.");
     } finally {
       setIsSubmitting(false);
     }
   };
-  
+
   return (
     <>
       {/* Banner */}
@@ -66,7 +74,9 @@ const Contact = () => {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-          <h1 className="text-white text-4xl md:text-5xl font-bold">Contacto</h1>
+          <h1 className="text-white text-4xl md:text-5xl font-bold">
+            Contacto
+          </h1>
         </div>
       </div>
 
@@ -75,15 +85,18 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Información de contacto */}
           <div>
-            <SectionTitle 
-              title="Ponte en Contacto" 
+            <SectionTitle
+              title="Ponte en Contacto"
               subtitle="Estamos aquí para ayudarte con cualquier consulta"
             />
-            
+
             <p className="text-neutral-600 mb-8">
-              Si tienes alguna pregunta sobre nuestras instalaciones, servicios o disponibilidad, no dudes en contactarnos. Nuestro equipo estará encantado de atenderte y ayudarte a planificar tu estancia perfecta en Finca Los Olivos.
+              Si tienes alguna pregunta sobre nuestras instalaciones, servicios
+              o disponibilidad, no dudes en contactarnos. Nuestro equipo estará
+              encantado de atenderte y ayudarte a planificar tu estancia
+              perfecta en Finca Los Olivos.
             </p>
-            
+
             <div className="space-y-6 mb-8">
               <div className="flex items-start">
                 <div className="bg-primary/10 p-3 rounded-full mr-4">
@@ -91,10 +104,14 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Dirección</h3>
-                  <p className="text-neutral-600">Camino de la Finca, 123<br />18001 Granada, España</p>
+                  <p className="text-neutral-600">
+                    Camino de la Finca, 123
+                    <br />
+                    18001 Granada, España
+                  </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="bg-primary/10 p-3 rounded-full mr-4">
                   <Phone size={24} className="text-primary" />
@@ -102,11 +119,16 @@ const Contact = () => {
                 <div>
                   <h3 className="font-semibold mb-1">Teléfono</h3>
                   <p className="text-neutral-600">
-                    <a href="tel:+34912345678" className="hover:text-primary transition-colors">+34 912 345 678</a>
+                    <a
+                      href="tel:+34912345678"
+                      className="hover:text-primary transition-colors"
+                    >
+                      +34 912 345 678
+                    </a>
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="bg-primary/10 p-3 rounded-full mr-4">
                   <Mail size={24} className="text-primary" />
@@ -114,57 +136,70 @@ const Contact = () => {
                 <div>
                   <h3 className="font-semibold mb-1">Email</h3>
                   <p className="text-neutral-600">
-                    <a href="mailto:info@fincalosolivos.com" className="hover:text-primary transition-colors">info@fincalosolivos.com</a>
+                    <a
+                      href="mailto:info@fincalosolivos.com"
+                      className="hover:text-primary transition-colors"
+                    >
+                      info@fincalosolivos.com
+                    </a>
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="bg-primary/10 p-3 rounded-full mr-4">
                   <Clock size={24} className="text-primary" />
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Horario de atención</h3>
-                  <p className="text-neutral-600">Lunes a Domingo: 8:00 - 22:00</p>
+                  <p className="text-neutral-600">
+                    Lunes a Domingo: 8:00 - 22:00
+                  </p>
                 </div>
               </div>
             </div>
-            
+
             {/* Mapa */}
             <div className="rounded-xl overflow-hidden h-64 shadow-md">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12858.919457221244!2d-3.6033677302246034!3d37.17734999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fce3f2a63f15%3A0xd8a54f27155f811!2sAlhambra!5e0!3m2!1ses!2ses!4v1651234567890!5m2!1ses!2ses" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12858.919457221244!2d-3.6033677302246034!3d37.17734999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fce3f2a63f15%3A0xd8a54f27155f811!2sAlhambra!5e0!3m2!1ses!2ses!4v1651234567890!5m2!1ses!2ses"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Ubicación de Finca Los Olivos"
               ></iframe>
             </div>
           </div>
-          
+
           {/* Formulario de contacto */}
           <div>
             <div className="card p-8">
               <h2 className="text-2xl font-bold mb-6">Envíanos un mensaje</h2>
-              
+
               {error && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex items-start">
-                  <AlertCircle size={20} className="text-error mr-2 mt-0.5 flex-shrink-0" />
+                  <AlertCircle
+                    size={20}
+                    className="text-error mr-2 mt-0.5 flex-shrink-0"
+                  />
                   <p className="text-error">{error}</p>
                 </div>
               )}
-              
+
               {success ? (
                 <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Check size={32} className="text-success" />
                   </div>
-                  <h3 className="text-xl font-bold text-success mb-2">¡Mensaje Enviado!</h3>
+                  <h3 className="text-xl font-bold text-success mb-2">
+                    ¡Mensaje Enviado!
+                  </h3>
                   <p className="text-neutral-600">
-                    Gracias por contactar con nosotros. Te responderemos lo antes posible.
+                    Gracias por contactar con nosotros. Te responderemos lo
+                    antes posible.
                   </p>
                 </div>
               ) : (
@@ -181,7 +216,7 @@ const Contact = () => {
                         required
                       />
                     </div>
-                    
+
                     <div className="input-group">
                       <label className="input-label">Email *</label>
                       <input
@@ -194,7 +229,7 @@ const Contact = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="input-group mb-4">
                     <label className="input-label">Asunto</label>
                     <input
@@ -205,7 +240,7 @@ const Contact = () => {
                       className="input"
                     />
                   </div>
-                  
+
                   <div className="input-group mb-6">
                     <label className="input-label">Mensaje *</label>
                     <textarea
@@ -217,7 +252,7 @@ const Contact = () => {
                       required
                     ></textarea>
                   </div>
-                  
+
                   <Button
                     type="submit"
                     variant="primary"
@@ -229,7 +264,9 @@ const Contact = () => {
                         <Loader size={20} className="animate-spin mr-2" />
                         Enviando...
                       </>
-                    ) : 'Enviar mensaje'}
+                    ) : (
+                      "Enviar mensaje"
+                    )}
                   </Button>
                 </form>
               )}

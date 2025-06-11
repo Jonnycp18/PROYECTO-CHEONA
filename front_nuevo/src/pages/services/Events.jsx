@@ -1,42 +1,52 @@
-import React from 'react';
-import { PartyPopper, Users, Music, Camera, Calendar, Clock, MapPin, Heart } from 'lucide-react';
-import Button from '../../components/ui/Button';
+import React from "react";
+import {
+  PartyPopper,
+  Users,
+  Music,
+  Camera,
+  Calendar,
+  Clock,
+  MapPin,
+  Heart,
+} from "lucide-react";
+import Button from "../../components/ui/Button";
 
 const Events = () => {
   const features = [
     {
       icon: <Users className="w-6 h-6 text-primary" />,
       title: "Capacidad",
-      description: "Hasta 200 personas"
+      description: "Hasta 200 personas",
     },
     {
       icon: <Music className="w-6 h-6 text-primary" />,
       title: "Equipamiento",
-      description: "Sonido profesional incluido"
+      description: "Sonido profesional incluido",
     },
     {
       icon: <Camera className="w-6 h-6 text-primary" />,
       title: "Locaciones",
-      description: "Múltiples espacios para fotos"
-    }
+      description: "Múltiples espacios para fotos",
+    },
   ];
 
   const eventTypes = [
     {
       name: "Bodas",
       image: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg",
-      description: "El lugar perfecto para tu día especial"
+      description: "El lugar perfecto para tu día especial",
     },
     {
       name: "Corporativos",
-      image: "https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg",
-      description: "Reuniones y eventos empresariales"
+      image:
+        "https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg",
+      description: "Reuniones y eventos empresariales",
     },
     {
       name: "Celebraciones",
       image: "https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg",
-      description: "Cumpleaños, aniversarios y más"
-    }
+      description: "Cumpleaños, aniversarios y más",
+    },
   ];
 
   return (
@@ -78,17 +88,24 @@ const Events = () => {
       {/* Tipos de Eventos */}
       <section className="py-16 bg-neutral-50">
         <div className="container-custom">
-          <h2 className="text-3xl font-bold text-center mb-12">Tipos de Eventos</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Tipos de Eventos
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {eventTypes.map((type, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-2xl">
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-2xl"
+              >
                 <img
                   src={type.image}
                   alt={type.name}
                   className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
-                  <h3 className="text-2xl font-bold text-white mb-2">{type.name}</h3>
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    {type.name}
+                  </h3>
                   <p className="text-white/90">{type.description}</p>
                 </div>
               </div>
@@ -144,7 +161,7 @@ const Events = () => {
 
             <div className="space-y-6 bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold">Información Importante</h3>
-              
+
               <div className="flex items-center">
                 <Clock className="text-primary mr-3" />
                 <div>

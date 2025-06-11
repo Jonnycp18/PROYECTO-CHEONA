@@ -1,27 +1,27 @@
-import React from 'react';
-import { Check, Users, MapPin, CalendarDays } from 'lucide-react';
-import Button from '../ui/Button';
+import React from "react";
+import { Check, Users, MapPin, CalendarDays } from "lucide-react";
+import Button from "../ui/Button";
 
 const FullPropertySection = () => {
   const features = [
-    'Casa principal con 4 habitaciones',
-    '2 cabañas independientes',
-    '3 unidades de glamping',
-    'Capacidad total para 20 personas',
-    'Cocina completamente equipada',
-    'Salón de eventos para 100 personas',
-    'Piscina y áreas de recreación',
-    'Estacionamiento privado',
-    'Personal de servicio incluido',
-    'Actividades organizadas disponibles'
+    "Casa principal con 4 habitaciones",
+    "2 cabañas independientes",
+    "3 unidades de glamping",
+    "Capacidad total para 20 personas",
+    "Cocina completamente equipada",
+    "Salón de eventos para 100 personas",
+    "Piscina y áreas de recreación",
+    "Estacionamiento privado",
+    "Personal de servicio incluido",
+    "Actividades organizadas disponibles",
   ];
 
   const additionalServices = [
-    'Servicio de catering',
-    'Decoración para eventos',
-    'Actividades guiadas',
-    'Transporte desde/hacia aeropuerto',
-    'Masajes y tratamientos de spa'
+    "Servicio de catering",
+    "Decoración para eventos",
+    "Actividades guiadas",
+    "Transporte desde/hacia aeropuerto",
+    "Masajes y tratamientos de spa",
   ];
 
   return (
@@ -35,7 +35,7 @@ const FullPropertySection = () => {
             className="w-full h-full object-cover"
           />
         </div>
-        
+
         <div className="grid grid-cols-2 gap-4 mb-6">
           <img
             src="https://images.pexels.com/photos/2662816/pexels-photo-2662816.jpeg"
@@ -53,7 +53,10 @@ const FullPropertySection = () => {
         <div className="grid sm:grid-cols-2 gap-3 mb-8">
           {features.map((feature, index) => (
             <div key={index} className="flex items-start">
-              <Check size={18} className="text-primary mt-1 mr-2 flex-shrink-0" />
+              <Check
+                size={18}
+                className="text-primary mt-1 mr-2 flex-shrink-0"
+              />
               <span>{feature}</span>
             </div>
           ))}
@@ -63,7 +66,10 @@ const FullPropertySection = () => {
         <div className="grid sm:grid-cols-2 gap-3">
           {additionalServices.map((service, index) => (
             <div key={index} className="flex items-start">
-              <Check size={18} className="text-primary mt-1 mr-2 flex-shrink-0" />
+              <Check
+                size={18}
+                className="text-primary mt-1 mr-2 flex-shrink-0"
+              />
               <span>{service}</span>
             </div>
           ))}
@@ -74,7 +80,7 @@ const FullPropertySection = () => {
       <div>
         <div className="bg-white rounded-2xl p-6 shadow-lg sticky top-24">
           <h2 className="text-3xl font-bold mb-2">Finca Completa</h2>
-          
+
           <div className="flex items-center text-neutral-600 mb-6">
             <Users size={18} className="mr-2" />
             <span>Hasta 20 personas</span>
@@ -106,7 +112,7 @@ const FullPropertySection = () => {
             </div>
           </div>
 
-          <Button 
+          <Button
             variant="primary"
             fullWidth
             className="mb-4"
@@ -118,8 +124,8 @@ const FullPropertySection = () => {
           <div className="bg-primary/5 rounded-xl p-4">
             <h3 className="font-semibold mb-2">Política de cancelación</h3>
             <p className="text-sm text-neutral-600">
-              Cancelación gratuita hasta 30 días antes de la llegada. 
-              Después de esta fecha, se aplicará un cargo del 50% del valor total.
+              Cancelación gratuita hasta 30 días antes de la llegada. Después de
+              esta fecha, se aplicará un cargo del 50% del valor total.
             </p>
           </div>
         </div>

@@ -1,7 +1,7 @@
 export interface Room {
   id: number;
   name: string;
-  type: 'cabin' | 'glamping';
+  type: "cabin" | "glamping";
   description: string;
   capacity: number;
   price: number;

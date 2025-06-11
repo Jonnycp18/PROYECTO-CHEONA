@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext(null);
 
@@ -9,22 +9,22 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     // Check authentication status on mount
     const checkAuth = () => {
-      const isAuth = localStorage.getItem('isAuthenticated');
-      const userData = localStorage.getItem('userData');
-      
-      if (isAuth === 'true' && userData) {
+      const isAuth = localStorage.getItem("isAuthenticated");
+      const userData = localStorage.getItem("userData");
+
+      if (isAuth === "true" && userData) {
         try {
           setUser(JSON.parse(userData));
         } catch (e) {
           // Si hay un error al parsear, limpiamos el localStorage
-          localStorage.removeItem('isAuthenticated');
-          localStorage.removeItem('userData');
+          localStorage.removeItem("isAuthenticated");
+          localStorage.removeItem("userData");
           setUser(null);
         }
       } else {
         // Si no hay autenticación válida, limpiamos el localStorage
-        localStorage.removeItem('isAuthenticated');
-        localStorage.removeItem('userData');
+        localStorage.removeItem("isAuthenticated");
+        localStorage.removeItem("userData");
         setUser(null);
       }
       setLoading(false);
@@ -35,14 +35,14 @@ export const AuthProvider = ({ children }) => {
 
   const login = (userData) => {
     setUser(userData);
-    localStorage.setItem('isAuthenticated', 'true');
-    localStorage.setItem('userData', JSON.stringify(userData));
+    localStorage.setItem("isAuthenticated", "true");
+    localStorage.setItem("userData", JSON.stringify(userData));
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('isAuthenticated');
-    localStorage.removeItem('userData');
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("userData");
   };
 
   return (
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };

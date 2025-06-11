@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import ReservationForm from '../components/reservation/ReservationForm';
-import SectionTitle from '../components/ui/SectionTitle';
+import React, { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import ReservationForm from "../components/reservation/ReservationForm";
+import SectionTitle from "../components/ui/SectionTitle";
 
 const Reservation = () => {
   const [searchParams] = useSearchParams();
-  const initialType = searchParams.get('type') || 'cabin';
+  const initialType = searchParams.get("type") || "cabin";
 
   return (
     <div className="min-h-screen bg-neutral-50">
@@ -21,14 +21,15 @@ const Reservation = () => {
             Reserva tu Estancia
           </h1>
           <p className="text-xl text-white/90 max-w-2xl">
-            Elige entre nuestras opciones de alojamiento y vive una experiencia única
+            Elige entre nuestras opciones de alojamiento y vive una experiencia
+            única
           </p>
         </div>
       </div>
 
       {/* Content */}
       <div className="container-custom py-12">
-        <SectionTitle 
+        <SectionTitle
           title="Selecciona tu Alojamiento"
           subtitle="Encuentra el espacio perfecto para tu escapada"
           centered

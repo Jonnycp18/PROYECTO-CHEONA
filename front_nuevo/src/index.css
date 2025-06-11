@@ -15,7 +15,7 @@
 
 /* Base styles */
 html {
-  font-family: 'Open Sans', system-ui, sans-serif;
+  font-family: "Open Sans", system-ui, sans-serif;
   scroll-behavior: smooth;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
@@ -117,23 +117,28 @@ img {
 }
 
 @layer base {
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', system-ui, sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Montserrat", system-ui, sans-serif;
     @apply font-semibold leading-tight text-neutral-800;
   }
-  
+
   h1 {
     @apply text-4xl md:text-5xl mb-6;
   }
-  
+
   h2 {
     @apply text-3xl md:text-4xl mb-5;
   }
-  
+
   h3 {
     @apply text-2xl md:text-3xl mb-4;
   }
-  
+
   p {
     @apply leading-relaxed mb-4 text-neutral-700;
   }
@@ -145,36 +150,36 @@ img {
     @apply rounded-lg shadow-md hover:shadow-lg active:shadow-sm;
     @apply transform hover:-translate-y-0.5 active:translate-y-0;
   }
-  
+
   .btn-primary {
     @apply bg-primary text-white hover:bg-primary-dark active:bg-primary-darker;
     @apply hover:ring-4 hover:ring-primary/20;
   }
-  
+
   .btn-secondary {
     @apply bg-secondary text-white hover:bg-secondary-dark active:bg-secondary-darker;
     @apply hover:ring-4 hover:ring-secondary/20;
   }
-  
+
   .btn-outline {
     @apply border-2 border-primary text-primary hover:bg-primary hover:text-white;
     @apply hover:ring-4 hover:ring-primary/20;
   }
-  
+
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-  
+
   .card {
     @apply bg-white rounded-3xl shadow-lg overflow-hidden;
     @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
     @apply border border-neutral-100;
   }
-  
+
   .section {
     @apply py-16 md:py-24;
   }
-  
+
   .input {
     @apply w-full px-4 py-3 rounded-xl border border-neutral-200;
     @apply bg-white;
@@ -182,24 +187,24 @@ img {
     @apply transition-all duration-300;
     @apply placeholder-neutral-400;
   }
-  
+
   .input-group {
     @apply mb-4;
   }
-  
+
   .input-label {
     @apply block text-sm font-medium text-neutral-700 mb-1.5;
   }
-  
+
   .error-text {
     @apply text-error text-sm mt-1;
   }
-  
+
   .nav-link {
     @apply px-4 py-2 rounded-full transition-all duration-300;
     @apply hover:bg-white/10 hover:text-white;
   }
-  
+
   .nav-link-active {
     @apply bg-white/20 text-white font-medium;
   }
@@ -209,23 +214,23 @@ img {
   .fade-in {
     @apply animate-fade-in;
   }
-  
+
   .slide-up {
     @apply animate-slide-up;
   }
-  
+
   .float {
     @apply animate-float;
   }
-  
+
   .glass-effect {
     @apply bg-white/90 backdrop-blur-md;
   }
-  
+
   .nature-gradient {
     @apply bg-gradient-to-r from-nature-green to-primary;
   }
-  
+
   .warm-gradient {
     @apply bg-gradient-to-r from-secondary to-accent;
   }
@@ -233,8 +238,12 @@ img {
 
 /* Custom animations */
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-up {
@@ -249,6 +258,11 @@ img {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
