@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime, date
 
+
 class ReservationCreate(BaseModel):
     id_cliente: int
     id_alojamiento: int
@@ -12,6 +13,7 @@ class ReservationCreate(BaseModel):
     observaciones: Optional[str] = None
     costo_total: float
 
+
 class ReservationUpdate(BaseModel):
     fecha_inicio: Optional[date]
     fecha_fin: Optional[date]
@@ -20,6 +22,7 @@ class ReservationUpdate(BaseModel):
     observaciones: Optional[str]
     estado: Optional[str]
     costo_total: Optional[float]
+
 
 class ReservationResponse(BaseModel):
     id_reserva: int

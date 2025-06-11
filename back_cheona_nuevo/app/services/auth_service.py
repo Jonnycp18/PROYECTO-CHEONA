@@ -4,8 +4,11 @@ from app.database.connection import cursor
 from app.models.auth_model import LoginRequest
 from app.utils.jwt_utils import create_access_token
 
+
 def login_user(data: LoginRequest):
-    query = "SELECT id_cliente, nombre, password, email, rol FROM cliente WHERE email = %s"
+    query = (
+        "SELECT id_cliente, nombre, password, email, rol FROM cliente WHERE email = %s"
+    )
     cursor.execute(query, (data.email,))
     user = cursor.fetchone()
 
@@ -14,7 +17,7 @@ def login_user(data: LoginRequest):
 
     id_cliente, nombre, hashed_password, email, rol = user
     if not rol:
-        rol = 'client'
+        rol = "client"
 
     if hashlib.sha256(data.password.encode()).hexdigest() != hashed_password:
         raise HTTPException(status_code=401, detail="Credenciales incorrectas")
@@ -29,6 +32,6 @@ def login_user(data: LoginRequest):
             "id_cliente": id_cliente,
             "nombre": nombre,
             "email": email,
-            "rol": rol
-        }
+            "rol": rol,
+        },
     }

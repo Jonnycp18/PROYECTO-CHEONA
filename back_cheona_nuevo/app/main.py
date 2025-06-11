@@ -16,9 +16,11 @@ app.add_middleware(
 
 app.include_router(user.router)
 
+
 @app.get("/")
 def root():
     return {"message": "API de Usuarios"}
+
 
 app.include_router(auth_router)
 
