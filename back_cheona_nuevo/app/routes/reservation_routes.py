@@ -33,16 +33,12 @@ def check_availability_endpoint(id_alojamiento: int, fecha_inicio: str, fecha_fi
     return {"disponible": disponible}
 
 
-@router.get(
-    "/reservas/usuario/{id_cliente}", response_model=List[ReservationResponse]
-)
+@router.get("/reservas/usuario/{id_cliente}", response_model=List[ReservationResponse])
 def get_user_reservations_endpoint(id_cliente: int):
     return get_user_reservations(id_cliente)
 
 
-@router.get(
-    "/reservas/", response_model=List[ReservationResponse]
-)
+@router.get("/reservas/", response_model=List[ReservationResponse])
 def get_all_reservations_endpoint():
     return get_all_reservations()
 

@@ -14,15 +14,13 @@ from ..models.reservation_model import (
 def create_reservation(data: ReservationCreate):
     print(">>> create_reservation ejecutado")
     fecha_reserva = datetime.now()
-    insert_query = (
-        """
+    insert_query = """
         INSERT INTO reservas (
             id_cliente, id_alojamiento, fecha_reserva, fecha_inicio, fecha_fin,
             cantidad_personas, estado, metodo_pago, pago_confirmado, observaciones, costo_total
         )
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
-    )
     values = (
         data.id_cliente,
         data.id_alojamiento,
@@ -41,30 +39,23 @@ def create_reservation(data: ReservationCreate):
         mydb.commit()
         return {"message": "Reserva creada exitosamente"}
     except Exception as e:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Error al crear la reserva: {e}"
-        )
+        raise HTTPException(status_code=400, detail=f"Error al crear la reserva: {e}")
 
 
 def check_availability(id_alojamiento: int, fecha_inicio, fecha_fin) -> bool:
     # Verificar que no haya reservas que se crucen con el rango dado
-    query = (
-        """
+    query = """
         SELECT COUNT(*) FROM reserva
         WHERE id_alojamiento = %s AND estado IN ('pendiente', 'confirmada') \
         AND (fecha_inicio <= %s AND fecha_fin >= %s)
         """
-    )
     cursor.execute(query, (id_alojamiento, fecha_fin, fecha_inicio))
     count = cursor.fetchone()[0]
     return count == 0
 
 
 def get_user_reservations(id_cliente: int) -> List[ReservationResponse]:
-    query = (
-        "SELECT * FROM reserva WHERE id_cliente = %s ORDER BY fecha_reserva DESC"
-    )
+    query = "SELECT * FROM reserva WHERE id_cliente = %s ORDER BY fecha_reserva DESC"
     cursor.execute(query, (id_cliente,))
     results = cursor.fetchall()
     if not results:
@@ -112,9 +103,7 @@ def update_reservation(id_reserva: int, data: ReservationUpdate):
 
 def cancel_reservation(id_reserva: int):
     # En lugar de borrar, se cambia estado a 'cancelada'
-    query = (
-        "UPDATE reserva SET estado = 'cancelada' WHERE id_reserva = %s"
-    )
+    query = "UPDATE reserva SET estado = 'cancelada' WHERE id_reserva = %s"
     try:
         cursor.execute(query, (id_reserva,))
         mydb.commit()
@@ -128,9 +117,7 @@ def cancel_reservation(id_reserva: int):
 
 
 def get_reservation_details(id_reserva: int) -> ReservationResponse:
-    query = (
-        "SELECT * FROM reserva WHERE id_reserva = %s"
-    )
+    query = "SELECT * FROM reserva WHERE id_reserva = %s"
     cursor.execute(query, (id_reserva,))
     result = cursor.fetchone()
     if not result:
@@ -139,9 +126,7 @@ def get_reservation_details(id_reserva: int) -> ReservationResponse:
 
 
 def confirm_reservation_payment(id_reserva: int):
-    query = (
-        "UPDATE reserva SET pago_confirmado = TRUE, estado = 'confirmada' WHERE id_reserva = %s"
-    )
+    query = "UPDATE reserva SET pago_confirmado = TRUE, estado = 'confirmada' WHERE id_reserva = %s"
     try:
         cursor.execute(query, (id_reserva,))
         mydb.commit()
@@ -149,7 +134,4 @@ def confirm_reservation_payment(id_reserva: int):
             raise HTTPException(status_code=404, detail="Reserva no encontrada")
         return {"message": "Pago confirmado y reserva actualizada"}
     except Exception as e:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Error al confirmar pago: {e}"
-        )
+        raise HTTPException(status_code=400, detail=f"Error al confirmar pago: {e}")
