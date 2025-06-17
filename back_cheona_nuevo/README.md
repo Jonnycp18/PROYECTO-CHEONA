@@ -187,3 +187,5 @@ Este proyecto está bajo la licencia MIT.
 
 Para soporte o dudas, contacta a [svenns109@gmial.com](mailto:svenns109@gmial.com).
 gfdg
+
+linters
