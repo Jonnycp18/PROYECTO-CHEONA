@@ -1,12 +1,15 @@
-from fastapi import HTTPException, status
 from datetime import datetime
 from typing import List
+
+from fastapi import HTTPException, status
+
+from app.database.connection import cursor, mydb
+
 from ..models.reservation_model import (
     ReservationCreate,
-    ReservationUpdate,
     ReservationResponse,
+    ReservationUpdate,
 )
-from app.database.connection import cursor, mydb
 
 
 def create_reservation(data: ReservationCreate):

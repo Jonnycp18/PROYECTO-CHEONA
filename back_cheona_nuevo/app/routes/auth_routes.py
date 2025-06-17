@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from app.models.auth_model import LoginRequest, LoginResponse
 from app.services.auth_service import login_user
 

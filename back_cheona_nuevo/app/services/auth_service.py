@@ -1,5 +1,7 @@
 import hashlib
+
 from fastapi import HTTPException
+
 from app.database.connection import cursor
 from app.models.auth_model import LoginRequest
 from app.utils.jwt_utils import create_access_token

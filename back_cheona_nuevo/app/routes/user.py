@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, status
-from app.models.user import User
+
 from app.database.connection import cursor, mydb
+from app.models.user import User
 from app.services.user_service import hash_password
 
 router = APIRouter(prefix="/usuarios", tags=["Usuarios"])
