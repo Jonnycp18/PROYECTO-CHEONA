@@ -1,5 +1,3 @@
-import { apiService } from "./api";
-
 export const contactService = {
   async sendContactForm(formData) {
     try {

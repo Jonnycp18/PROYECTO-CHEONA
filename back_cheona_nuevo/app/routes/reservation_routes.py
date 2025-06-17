@@ -1,13 +1,22 @@
 from typing import List
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter
 
 from ..models.reservation_model import (
     ReservationCreate,
     ReservationResponse,
     ReservationUpdate,
 )
-from ..services.reservation_service import *
+from ..services.reservation_service import (
+    cancel_reservation,
+    check_availability,
+    confirm_reservation_payment,
+    create_reservation,
+    get_all_reservations,
+    get_reservation_details,
+    get_user_reservations,
+    update_reservation,
+)
 
 router = APIRouter()
 
@@ -24,12 +33,16 @@ def check_availability_endpoint(id_alojamiento: int, fecha_inicio: str, fecha_fi
     return {"disponible": disponible}
 
 
-@router.get("/reservas/usuario/{id_cliente}", response_model=List[ReservationResponse])
+@router.get(
+    "/reservas/usuario/{id_cliente}", response_model=List[ReservationResponse]
+)
 def get_user_reservations_endpoint(id_cliente: int):
     return get_user_reservations(id_cliente)
 
 
-@router.get("/reservas/", response_model=List[ReservationResponse])
+@router.get(
+    "/reservas/", response_model=List[ReservationResponse]
+)
 def get_all_reservations_endpoint():
     return get_all_reservations()
 

@@ -1,5 +1,4 @@
-import { apiService } from "./api";
-import { rooms, availabilityMock } from "../mocks/data";
+import { rooms } from "../mocks/data";
 
 // En un entorno real, estas funciones llamarían a la API
 // Por ahora, usamos datos mock para desarrollo

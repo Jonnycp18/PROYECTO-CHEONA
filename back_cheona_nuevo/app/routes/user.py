@@ -20,10 +20,12 @@ def get_user(id: int):
 @router.post("/", status_code=status.HTTP_201_CREATED)
 def insert_user(user: User):
     hashed_pw = hash_password(user.password)
-    insert_query = """
+    insert_query = (
+        """
     INSERT INTO cliente (nombre, apellido, email, telefono, documento_identidad, password, rol)
     VALUES (%s, %s, %s, %s, %s, %s, %s)
     """
+    )
     try:
         cursor.execute(
             insert_query,
@@ -39,18 +41,23 @@ def insert_user(user: User):
         )
         mydb.commit()
     except Exception as err:
-        raise HTTPException(status_code=400, detail=f"Error: {err}")
+        raise HTTPException(
+            status_code=400,
+            detail=f"Error: {err}"
+        )
     return {"message": "Usuario insertado exitosamente"}
 
 
 @router.patch("/{id}")
 def update_user(id: int, user: User):
     hashed_pw = hash_password(user.password)
-    update_query = """
+    update_query = (
+        """
     UPDATE cliente
     SET nombre=%s, apellido=%s, email=%s, telefono=%s, documento_identidad=%s, password=%s
     WHERE id_cliente=%s
     """
+    )
     try:
         cursor.execute(
             update_query,
@@ -68,7 +75,10 @@ def update_user(id: int, user: User):
         if cursor.rowcount == 0:
             raise HTTPException(status_code=404, detail="Usuario no encontrado")
     except Exception as err:
-        raise HTTPException(status_code=400, detail=f"Error al actualizar: {err}")
+        raise HTTPException(
+            status_code=400,
+            detail=f"Error al actualizar: {err}"
+        )
     return {"message": "Usuario actualizado", "id": id}
 
 
